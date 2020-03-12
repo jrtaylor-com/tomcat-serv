@@ -2,8 +2,12 @@ version: '3'
 
 services:
   tomcat:
-   image: tomcat:8.5-jdk8-corretto
-   ports:
+    build:
+     context: ./
+
+    ports:
     - 8080:8080
-   volumes:
-    - ./webapps:/usr/local/tomcat/webapps
+    volumes:
+    - ./webapps/sample:/usr/local/tomcat/webapps/sample
+    - ./webapps/sample2:/usr/local/tomcat/webbackend/sample2
+    - ./build/tomcat/server.xml:/usr/local/tomcat/conf/server.xml
